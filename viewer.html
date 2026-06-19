@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viewer for Steam Next Fest</title>
+<link rel="icon" href="data:image/x-icon;base64,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">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }  /* beat id-selector display rules below */
+  body {
+    margin: 0; font: 14px/1.5 "Segoe UI", system-ui, sans-serif;
+    background: #1b2838; color: #c7d5e0;
+  }
+  a { color: #66c0f4; text-decoration: none; }
+
+  /* ---- Drop / load screen ---- */
+  #drop {
+    position: fixed; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px; text-align: center;
+    padding: 24px; background: #1b2838; z-index: 10;
+  }
+  #drop.dragover { background: #21364a; outline: 3px dashed #66c0f4; outline-offset: -12px; }
+  #drop .drop-logo { width: 112px; height: 112px; border-radius: 22px; margin-bottom: 6px; }
+  #drop h1 { margin: 0; font-size: 22px; color: #fff; }
+  #drop p { margin: 0; color: #8f98a0; max-width: 420px; }
+  .pickbtn {
+    padding: 11px 20px; border: 0; border-radius: 4px; cursor: pointer;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: linear-gradient(90deg,#06bfff,#2d73ff);
+  }
+  .err { color: #ff7b72; }
+
+  /* ---- Toolbar ---- */
+  header.bar {
+    position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap;
+    align-items: center; gap: 10px; padding: 12px 16px;
+    background: #16212e; border-bottom: 1px solid #0e1722;
+  }
+  header.bar .logo { width: 26px; height: 26px; border-radius: 5px; flex: none; display: block; cursor: pointer; }
+  header.bar .title { font-weight: 700; color: #fff; font-size: 15px; margin-right: 4px; }
+  header.bar .meta { font-size: 12px; color: #8f98a0; }
+  header.bar input, header.bar select {
+    background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 7px 9px; font: inherit;
+  }
+  header.bar input#q { min-width: 200px; flex: 1 1 220px; }
+  header.bar .spacer { flex: 1; }
+  header.bar .count { font-size: 12px; color: #8f98a0; white-space: nowrap; }
+  .clearfilter {
+    cursor: pointer; color: #66c0f4; font-size: 12px; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 6px 9px; background: #0e1722;
+  }
+
+  /* ---- Grid ---- */
+  #grid {
+    display: grid; gap: 14px; padding: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .card {
+    position: relative;
+    background: #16202d; border: 1px solid #0e1722; border-radius: 6px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .08s, box-shadow .08s;
+  }
+  .card .idx {
+    position: absolute; top: 6px; left: 6px; z-index: 2;
+    background: rgba(0,0,0,.78); color: #fff; font-size: 11px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px; letter-spacing: .02em;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.45); }
+  .card .thumb { display: block; aspect-ratio: 460/215; background: #0e1722; width: 100%; object-fit: cover; }
+  .card .body { padding: 10px 11px 12px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .card .name { font-weight: 600; color: #fff; font-size: 14px; line-height: 1.25; }
+  .card .dev { font-size: 11px; color: #8f98a0; margin-top: -3px; }
+  .card .rowmeta { display: flex; align-items: center; gap: 8px; font-size: 11px; flex-wrap: wrap; }
+  .badge { padding: 2px 7px; border-radius: 10px; font-weight: 600; font-size: 11px; }
+  .badge.none { background: #2a3f55; color: #8f98a0; }
+  .rel { color: #8f98a0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; }
+  .tag {
+    font-size: 10px; padding: 2px 6px; border-radius: 3px; cursor: pointer;
+    background: #2a3f55; color: #b9d2e6;
+  }
+  .tag:hover { background: #3a566f; color: #fff; }
+  .free { color: #a4d007; font-weight: 600; }
+  .empty { padding: 40px 16px; text-align: center; color: #8f98a0; }
+  .pager {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    flex-wrap: wrap; padding: 14px 16px;
+  }
+  .pager button {
+    background: #2a475e; color: #cfe; border: 0; border-radius: 4px;
+    padding: 7px 12px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .pager button:hover:not(:disabled) { background: #335a78; }
+  .pager button:disabled { opacity: .4; cursor: default; }
+  .pager .info { color: #8f98a0; font-size: 13px; margin: 0 6px; }
+
+  /* ---- Tag filter panel ---- */
+  .tagbtn {
+    background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 7px 10px; font: inherit; cursor: pointer;
+  }
+  .tagbtn.active { border-color: #66c0f4; color: #fff; }
+  #tagPanel { background: #16212e; border-bottom: 1px solid #0e1722; padding: 10px 16px; }
+  .tp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .tp-head input {
+    background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 6px 9px; font: inherit; min-width: 160px;
+  }
+  .tp-head select { background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55; border-radius: 4px; padding: 6px; font: inherit; }
+  .tp-head button {
+    background: #2a475e; color: #cfe; border: 0; border-radius: 4px;
+    padding: 6px 11px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .tp-head button:hover { background: #335a78; }
+  .tp-mode { font-size: 12px; color: #8f98a0; display: flex; align-items: center; gap: 5px; }
+  .tp-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1px 14px; max-height: 260px; overflow: auto; padding: 4px 2px;
+    border-top: 1px solid #0e1722;
+  }
+  .tg {
+    display: flex; align-items: center; gap: 7px; font-size: 12px; padding: 3px 4px;
+    cursor: pointer; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .tg:hover { background: #1f2f3f; }
+  .tg input { accent-color: #66c0f4; flex: none; }
+  .tg .c { color: #5f6b76; }
+  #tagPinned { padding: 2px 2px 0; }
+  .tg.pinned { font-weight: 600; color: #cfe; border-bottom: 1px dashed #2a3f55; padding-bottom: 6px; margin-bottom: 2px; }
+  .tp-hint { font-size: 11px; color: #66c0f4; min-height: 14px; margin: 2px 0 6px; }
+
+  /* ---- Favorites ---- */
+  .favbtn {
+    background: #0e1722; color: #f5c518; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 7px 10px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .favbtn:hover:not(:disabled) { border-color: #f5c518; }
+  .favbtn:disabled { opacity: .45; cursor: default; }
+  .card .star {
+    position: absolute; top: 6px; right: 6px; z-index: 2;
+    width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%;
+    background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: 15px; line-height: 1;
+    display: flex; align-items: center; justify-content: center; transition: transform .08s;
+  }
+  .card .star:hover { transform: scale(1.15); }
+  .card .star.on { color: #f5c518; }
+  #favBackdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 15; display: none; }
+  #favBackdrop.show { display: block; }
+  #favSidebar {
+    position: fixed; top: 0; right: 0; height: 100%; width: 320px; max-width: 85vw;
+    background: #16212e; border-left: 1px solid #0e1722; z-index: 20;
+    display: flex; flex-direction: column; transform: translateX(100%); transition: transform .2s ease;
+  }
+  #favSidebar.open { transform: none; }
+  .fav-head { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid #0e1722; }
+  .fav-head strong { color: #fff; font-size: 15px; }
+  .fav-list { flex: 1; overflow: auto; padding: 6px 0; }
+  .fav-item { display: flex; align-items: center; gap: 8px; padding: 8px 14px; }
+  .fav-item:hover { background: #1f2f3f; }
+  .fav-item a { flex: 1; color: #c7d5e0; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fav-item a:hover { color: #66c0f4; }
+  .fav-rm { background: none; border: 0; color: #8f98a0; cursor: pointer; font-size: 14px; padding: 2px 5px; border-radius: 3px; }
+  .fav-rm:hover { color: #ff7b72; background: #2a1f24; }
+  .fav-empty { padding: 28px 18px; text-align: center; color: #8f98a0; font-size: 13px; line-height: 1.6; }
+  .fav-foot { padding: 12px 16px; border-top: 1px solid #0e1722; }
+
+  /* ---- About modal ---- */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 30; display: none; }
+  .modal-backdrop.show { display: block; }
+  .modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 31;
+    width: 320px; max-width: 90vw; background: #16212e; border: 1px solid #2a3f55;
+    border-radius: 8px; padding: 22px 22px 18px; text-align: center;
+    box-shadow: 0 12px 44px rgba(0,0,0,.6);
+  }
+  .about-logo { width: 64px; height: 64px; border-radius: 14px; margin: 0 auto 8px; display: block; }
+  .modal h2 { margin: 2px 0 8px; font-size: 16px; color: #fff; }
+  .modal p { margin: 5px 0; font-size: 13px; color: #c7d5e0; }
+  .modal .muted { color: #8f98a0; }
+  .modal a { color: #66c0f4; }
+  .modal button { margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div id="drop">
+  <img id="dropLogo" class="drop-logo" alt="">
+  <h1>Viewer for Steam Next Fest</h1>
+  <p>Drop the exported <code>nextfest_demos_*.json</code> here, or pick it below.
+     Everything stays local in your browser.</p>
+  <button class="pickbtn" id="pick">Choose JSON file</button>
+  <input type="file" id="file" accept="application/json,.json" hidden>
+  <p id="dropErr" class="err"></p>
+</div>
+
+<header class="bar" id="bar" hidden>
+  <img src="data:image/png;base64,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" class="logo" id="logo" alt="" title="About this app">
+  <span class="title">Viewer for Steam Next Fest</span>
+  <span class="meta" id="metaInfo"></span>
+  <input type="search" id="q" placeholder="Search name, developer, tag…">
+  <button class="tagbtn" id="tagToggle" type="button">Tags ▾</button>
+  <select id="reviewFilter" title="Filter by whether a demo has user reviews">
+    <option value="">All demos</option>
+    <option value="yes">Has reviews</option>
+    <option value="no">No reviews yet</option>
+  </select>
+  <select id="sort">
+    <option value="default">Fest order</option>
+    <option value="reviewPct">Best reviewed</option>
+    <option value="reviewCount">Most reviews</option>
+    <option value="release">Newest release</option>
+    <option value="name">Name A–Z</option>
+  </select>
+  <button class="tagbtn" id="sortDir" type="button" title="Reverse sort order" aria-label="Reverse sort order">▼</button>
+  <select id="perPage">
+    <option value="50">50 / page</option>
+    <option value="100" selected>100 / page</option>
+    <option value="200">200 / page</option>
+  </select>
+  <span class="clearfilter" id="clear" hidden>Clear ✕</span>
+  <span class="spacer"></span>
+  <span class="count" id="count"></span>
+  <button class="favbtn" id="favToggle" type="button">★ Favorites (0)</button>
+</header>
+
+<div id="favBackdrop"></div>
+<aside id="favSidebar" aria-hidden="true">
+  <div class="fav-head">
+    <strong>★ Favorites</strong>
+    <span class="meta" id="favCount2"></span>
+    <span class="spacer"></span>
+    <button class="tagbtn" id="favClose" type="button">Close ✕</button>
+  </div>
+  <div class="fav-list" id="favList"></div>
+  <div class="fav-foot">
+    <button class="favbtn" id="favDownload" type="button" style="width:100%">Download list (CSV)</button>
+  </div>
+</aside>
+
+<div id="aboutBackdrop" class="modal-backdrop"></div>
+<div id="aboutModal" class="modal" role="dialog" aria-modal="true" aria-label="About" hidden>
+  <img id="aboutLogo" class="about-logo" alt="">
+  <h2>Viewer for Steam Next Fest</h2>
+  <p>Browse and filter every Steam Next Fest demo.</p>
+  <p class="muted">Designed by <strong>Nick Saris</strong> &amp; <strong>Claude</strong>, 2026</p>
+  <p class="muted">MIT Licensed</p>
+  <p><a href="https://github.com/fruitymcdoo/ViewerForSteamNextFest" target="_blank" rel="noopener">View on GitHub ↗</a></p>
+  <button id="aboutClose" class="tagbtn" type="button">Close</button>
+</div>
+
+<section id="tagPanel" hidden>
+  <div class="tp-head">
+    <input type="search" id="tagSearch" placeholder="Find a tag…">
+    <span class="tp-mode">Match
+      <select id="tagMode">
+        <option value="any">any</option>
+        <option value="all">all</option>
+      </select>
+      selected</span>
+    <button type="button" id="selAll">Select all</button>
+    <button type="button" id="selNone">Select none</button>
+  </div>
+  <div id="tagHint" class="tp-hint"></div>
+  <div id="tagPinned"></div>
+  <div id="tagList" class="tp-list"></div>
+</section>
+
+<div class="pager" id="pagerTop"></div>
+<div id="grid"></div>
+<div class="empty" id="empty" hidden>No demos match your filters.</div>
+<div class="pager" id="pagerBot"></div>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const DEFAULT_CDN = "https://shared.akamai.steamstatic.com/store_item_assets/";
+
+let DEMOS = [];        // all demos, original (fest) order with .__i index
+let CDN = DEFAULT_CDN;
+let filtered = [];     // current filtered+sorted view
+let page = 0;          // current page index (0-based)
+let PAGE_SIZE = 100;   // cards per page
+let sortDir = 1;       // 1 = sort's natural order, -1 = reversed
+const selectedTags = new Set();  // tag names currently checked in the panel
+const UNTAGGED = "::untagged::";   // sentinel value for the pinned "Untagged" filter
+const INVERT_THRESHOLD = 20;       // > this many selected => Match-any flips to exclusion (filter-out)
+const REVIEW_PRIOR = 10;           // pseudo-reviews pulling sparse demos toward the neutral 0.5 score
+const STORAGE_KEY = "nextfest_viewer_filters_v1";  // persisted filter/sort state
+const FAV_KEY = "nextfest_viewer_favorites_v1";    // persisted favorites (name+link+appid)
+const favorites = new Map();   // appid(string) -> { appid, name, store_url }
+const byId = new Map();        // appid(string) -> demo (current dataset)
+
+// ---------- loading ----------
+function readFile(file) {
+  $("dropErr").textContent = "";
+  const reader = new FileReader();
+  reader.onload = () => {
+    try { ingest(JSON.parse(reader.result)); }
+    catch (e) { $("dropErr").textContent = "Could not parse JSON: " + e.message; }
+  };
+  reader.onerror = () => { $("dropErr").textContent = "Failed to read file."; };
+  reader.readAsText(file);
+}
+
+function ingest(data) {
+  if (!data || !Array.isArray(data.demos)) {
+    $("dropErr").textContent = "That doesn't look like a Next Fest export (no demos array).";
+    return;
+  }
+  CDN = (data.meta && data.meta.asset_cdn_base) || DEFAULT_CDN;
+  DEMOS = data.demos.map((d, i) => ({ ...d, __i: i, __score: reviewScore(d) }));
+  byId.clear();
+  for (const d of DEMOS) byId.set(String(d.appid), d);
+  buildTagPanel(DEMOS);
+  const m = data.meta || {};
+  // "Steam Next Fest June 2026" -> "June 2026" (the title already says the rest)
+  const period = (m.source || "").replace(/^Steam Next Fest\s*/i, "").trim();
+  const parts = [
+    period,
+    m.exported_at ? "exported " + m.exported_at.slice(0, 10) : null,
+    (m.resolved_count ?? DEMOS.length) + " demos"
+  ].filter(Boolean);
+  $("metaInfo").textContent = parts.join(" · ");
+  $("drop").hidden = true;
+  $("bar").hidden = false;
+  restoreFilters();
+  apply();
+  refreshFavUI();
+}
+
+// ---------- helpers ----------
+function assetUrl(d, name) {
+  const a = d.assets;
+  if (!a || !a.asset_url_format || !a[name]) return null;
+  return CDN + a.asset_url_format.replace("${FILENAME}", a[name]);
+}
+function topTags(d, n) {
+  return (d.tags || []).slice().sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, n);
+}
+function relTs(d) {
+  const t = d.release_date ? Date.parse(d.release_date) : NaN;
+  return Number.isNaN(t) ? 0 : t;
+}
+function relText(d) {
+  if (!d.release_date) return "";
+  const dt = new Date(d.release_date);
+  return Number.isNaN(dt) ? "" : dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+function reviewColor(pct) {
+  if (pct >= 80) return "#66c0f4";
+  if (pct >= 70) return "#a4d007";
+  if (pct >= 40) return "#c0a062";
+  return "#cf5a5a";
+}
+
+// Bayesian (shrinkage) review score in [0,1]: blends a demo's positive ratio with a
+// neutral 0.5 prior weighted by REVIEW_PRIOR. No reviews -> 0.5; many positive -> ~1;
+// many negative -> ~0. Used for the "Best reviewed" sort so volume breaks % ties.
+function reviewScore(d) {
+  const r = d.review;
+  const n = (r && r.count) || 0;
+  const positives = r ? (r.percent_positive / 100) * n : 0;
+  return (REVIEW_PRIOR * 0.5 + positives) / (REVIEW_PRIOR + n);
+}
+
+// ---------- tag filter panel (multi-select checkboxes) ----------
+function buildTagPanel(demos) {
+  const counts = new Map();
+  for (const d of demos) for (const t of (d.tags || []))
+    counts.set(t.name, (counts.get(t.name) || 0) + 1);
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const untagged = demos.filter(d => !(d.tags && d.tags.length)).length;
+  $("tagPinned").innerHTML =
+    `<label class="tg pinned"><input type="checkbox" value="${esc(UNTAGGED)}">` +
+    `<span class="n">Untagged</span> <span class="c">(${untagged.toLocaleString()})</span></label>`;
+  $("tagList").innerHTML = sorted.map(([name, c]) =>
+    `<label class="tg"><input type="checkbox" value="${esc(name)}">` +
+    `<span class="n">${esc(name)}</span> <span class="c">(${c.toLocaleString()})</span></label>`
+  ).join("");
+  selectedTags.clear();
+  updateTagButton();
+}
+
+function updateTagHint() {
+  const n = selectedTags.size;
+  const el = $("tagHint");
+  if (!n) { el.textContent = ""; return; }
+  const mode = $("tagMode").value;
+  if (mode === "all")
+    el.textContent = `Match all: showing demos that have all ${n} selected tags.`;
+  else if (n > INVERT_THRESHOLD)
+    el.textContent = `Filter-out mode (${n} selected): hiding demos that have any unselected tag.`;
+  else
+    el.textContent = `Match any: showing demos with at least one of the ${n} selected tags.`;
+}
+
+function updateTagButton() {
+  const n = selectedTags.size;
+  const btn = $("tagToggle");
+  btn.textContent = "Tags" + (n ? ` (${n})` : "") + " ▾";
+  btn.classList.toggle("active", n > 0);
+}
+
+// Bulk check/uncheck every tag box and sync the selected set.
+function setAllTags(on) {
+  selectedTags.clear();
+  for (const cb of document.querySelectorAll('#tagPinned input, #tagList input')) {
+    cb.checked = on;
+    if (on) selectedTags.add(cb.value);
+  }
+  updateTagButton();
+}
+
+// ---------- persistence ----------
+function saveFilters() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      q: $("q").value,
+      reviewFilter: $("reviewFilter").value,
+      sort: $("sort").value,
+      sortDir,
+      perPage: $("perPage").value,
+      tagMode: $("tagMode").value,
+      tags: [...selectedTags]
+    }));
+  } catch (e) { /* storage unavailable (private mode / file://) - ignore */ }
+}
+
+// Apply saved control state after a dataset's tag panel has been built.
+function restoreFilters() {
+  let s = null;
+  try { s = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); } catch (e) {}
+  if (!s) return;
+  if (typeof s.q === "string") $("q").value = s.q;
+  if (typeof s.reviewFilter === "string") $("reviewFilter").value = s.reviewFilter;
+  if (s.sort) $("sort").value = s.sort;
+  if (s.tagMode) $("tagMode").value = s.tagMode;
+  if (s.perPage) { $("perPage").value = String(s.perPage); PAGE_SIZE = +s.perPage; }
+  if (s.sortDir === -1) {
+    sortDir = -1;
+    const b = $("sortDir"); b.textContent = "▲"; b.classList.add("active");
+  }
+  if (Array.isArray(s.tags)) {
+    selectedTags.clear();
+    const boxes = [...document.querySelectorAll('#tagPinned input, #tagList input')];
+    for (const name of s.tags) {
+      const cb = boxes.find(x => x.value === name);  // only restore tags present in this dataset
+      if (cb) { cb.checked = true; selectedTags.add(name); }
+    }
+    updateTagButton();
+  }
+}
+
+// ---------- favorites ----------
+function saveFavorites() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify([...favorites.values()])); } catch (e) {}
+}
+function loadFavorites() {
+  let arr = null;
+  try { arr = JSON.parse(localStorage.getItem(FAV_KEY) || "null"); } catch (e) {}
+  if (Array.isArray(arr)) for (const f of arr) if (f && f.appid != null) favorites.set(String(f.appid), f);
+}
+
+function toggleFav(appid) {
+  const key = String(appid);
+  if (favorites.has(key)) {
+    favorites.delete(key);
+  } else {
+    const d = byId.get(key);
+    favorites.set(key, { appid: d ? d.appid : appid, name: d ? d.name : key, store_url: d ? d.store_url : null });
+  }
+  saveFavorites();
+  refreshFavUI();
+}
+
+function refreshFavUI() { updateFavButton(); renderFavList(); syncStars(); }
+
+function updateFavButton() {
+  const n = favorites.size;
+  $("favToggle").textContent = `★ Favorites (${n})`;
+  $("favCount2").textContent = n ? `${n} saved` : "";
+  $("favDownload").disabled = !n;
+}
+
+function renderFavList() {
+  const items = [...favorites.values()];
+  if (!items.length) {
+    $("favList").innerHTML = `<div class="fav-empty">No favorites yet.<br>Click the ☆ on any game to add it.</div>`;
+    return;
+  }
+  $("favList").innerHTML = items.map(f =>
+    `<div class="fav-item">` +
+      `<a href="${esc(f.store_url || "#")}" target="_blank" rel="noopener">${esc(f.name || f.appid)}</a>` +
+      `<button class="fav-rm" data-app="${esc(String(f.appid))}" title="Remove" aria-label="Remove">✕</button>` +
+    `</div>`).join("");
+}
+
+// Keep the star buttons on currently rendered cards in sync with the favorites set.
+function syncStars() {
+  for (const btn of $("grid").querySelectorAll(".star")) {
+    const on = favorites.has(btn.dataset.app);
+    btn.classList.toggle("on", on);
+    btn.textContent = on ? "★" : "☆";
+    btn.setAttribute("aria-pressed", String(on));
+  }
+}
+
+function openFav(open) {
+  $("favSidebar").classList.toggle("open", open);
+  $("favBackdrop").classList.toggle("show", open);
+  $("favSidebar").setAttribute("aria-hidden", String(!open));
+}
+
+function downloadFavorites() {
+  if (!favorites.size) return;
+  const cell = v => { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  const rows = ["name,store_url,appid"];
+  for (const f of favorites.values()) rows.push([cell(f.name), cell(f.store_url), cell(f.appid)].join(","));
+  const blob = new Blob([rows.join("\n")], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `nextfest_favorites_${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ---------- filter + sort ----------
+function apply() {
+  const q = $("q").value.trim().toLowerCase();
+  const sort = $("sort").value;
+  const mode = $("tagMode").value;           // "any" | "all"
+  const sel = selectedTags;
+  const reviewF = $("reviewFilter").value;   // "" | "yes" | "no"
+
+  const invert = mode === "any" && sel.size > INVERT_THRESHOLD;
+
+  filtered = DEMOS.filter(d => {
+    if (reviewF) {
+      const hasRev = !!(d.review && d.review.count > 0);
+      if (reviewF === "yes" && !hasRev) return false;
+      if (reviewF === "no" && hasRev) return false;
+    }
+    if (sel.size) {
+      // Untagged demos carry one virtual UNTAGGED tag so they flow through every mode.
+      const vt = (d.tags && d.tags.length) ? d.tags.map(t => t.name) : [UNTAGGED];
+      if (mode === "all") {
+        for (const s of sel) if (!vt.includes(s)) return false;
+      } else if (invert) {
+        // exclusion: demo must carry NONE of the unselected tags (vt ⊆ selected)
+        for (const n of vt) if (!sel.has(n)) return false;
+      } else if (!vt.some(n => sel.has(n))) {
+        return false;
+      }
+    }
+    if (!q) return true;
+    if ((d.name || "").toLowerCase().includes(q)) return true;
+    if ((d.developers || []).some(x => x.toLowerCase().includes(q))) return true;
+    if ((d.tags || []).some(t => (t.name || "").toLowerCase().includes(q))) return true;
+    return false;
+  });
+
+  const cmp = {
+    default:     (a, b) => a.__i - b.__i,
+    name:        (a, b) => (a.name || "").localeCompare(b.name || ""),
+    reviewPct:   (a, b) => b.__score - a.__score,
+    reviewCount: (a, b) => (b.review?.count || 0) - (a.review?.count || 0),
+    release:     (a, b) => relTs(b) - relTs(a),
+  }[sort];
+  filtered.sort((a, b) => sortDir * cmp(a, b));
+
+  updateTagHint();
+  $("clear").hidden = !(q || sel.size || reviewF);
+  $("count").textContent = `${filtered.length.toLocaleString()} of ${DEMOS.length.toLocaleString()}`;
+  $("empty").hidden = filtered.length > 0;
+
+  saveFilters();
+  page = 0;
+  renderPage();
+}
+
+// ---------- paginated rendering ----------
+function cardHTML(d, rank) {
+  const img = assetUrl(d, "header") || assetUrl(d, "main_capsule");
+  const rev = d.review;
+  const hasRev = rev && rev.count > 0;
+  const badge = hasRev
+    ? `<span class="badge" style="background:${reviewColor(rev.percent_positive)};color:#16202d">${rev.percent_positive}%</span>
+       <span class="rel">${rev.count.toLocaleString()} review${rev.count === 1 ? "" : "s"}</span>`
+    : `<span class="badge none">No reviews</span>`;
+  const rel = relText(d);
+  const tags = topTags(d, 5).map(t =>
+    `<span class="tag" data-tag="${esc(t.name)}">${esc(t.name)}</span>`).join("");
+
+  const fav = favorites.has(String(d.appid));
+  return `<article class="card">
+    <span class="idx">#${rank.toLocaleString()}</span>
+    <button class="star${fav ? " on" : ""}" data-app="${esc(String(d.appid))}" aria-pressed="${fav}" title="Toggle favorite">${fav ? "★" : "☆"}</button>
+    <a href="${esc(d.store_url || "#")}" target="_blank" rel="noopener">
+      ${img ? `<img class="thumb" loading="lazy" decoding="async" src="${esc(img)}" alt="">`
+            : `<div class="thumb"></div>`}
+    </a>
+    <div class="body">
+      <a class="name" href="${esc(d.store_url || "#")}" target="_blank" rel="noopener">${esc(d.name || "(unnamed)")}</a>
+      ${(d.developers || []).length ? `<div class="dev">${esc((d.developers || []).join(", "))}</div>` : ""}
+      <div class="rowmeta">
+        ${badge}
+        ${d.is_free ? `<span class="free">Free</span>` : ""}
+        ${rel ? `<span class="rel">· ${rel}</span>` : ""}
+      </div>
+      <div class="tags">${tags}</div>
+    </div>
+  </article>`;
+}
+
+function renderPage() {
+  const total = filtered.length;
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  page = Math.min(Math.max(0, page), pages - 1);
+  const start = page * PAGE_SIZE;
+  const slice = filtered.slice(start, start + PAGE_SIZE);
+  // rank = position within the current sorted/filtered view (1-based, global)
+  $("grid").innerHTML = slice.map((d, i) => cardHTML(d, start + i + 1)).join("");
+  renderPager(start, slice.length, total, pages);
+}
+
+function renderPager(start, shown, total, pages) {
+  const html = total === 0 ? "" : `
+    <button data-action="first" ${page === 0 ? "disabled" : ""}>« First</button>
+    <button data-action="prev"  ${page === 0 ? "disabled" : ""}>‹ Prev</button>
+    <span class="info">${(start + 1).toLocaleString()}–${(start + shown).toLocaleString()} of ${total.toLocaleString()} · page ${page + 1} / ${pages}</span>
+    <button data-action="next"  ${page >= pages - 1 ? "disabled" : ""}>Next ›</button>
+    <button data-action="last"  ${page >= pages - 1 ? "disabled" : ""}>Last »</button>`;
+  $("pagerTop").innerHTML = html;
+  $("pagerBot").innerHTML = html;
+}
+
+function gotoPage(action) {
+  const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (action === "first") page = 0;
+  else if (action === "prev") page = page - 1;
+  else if (action === "next") page = page + 1;
+  else if (action === "last") page = pages - 1;
+  renderPage();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+// ---------- events ----------
+$("pick").addEventListener("click", () => $("file").click());
+$("file").addEventListener("change", e => e.target.files[0] && readFile(e.target.files[0]));
+
+const drop = $("drop");
+["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.add("dragover");
+}));
+["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => {
+  e.preventDefault(); if (ev === "dragleave" && e.target !== drop) return;
+  drop.classList.remove("dragover");
+}));
+drop.addEventListener("drop", e => {
+  const f = e.dataTransfer.files[0];
+  if (f) readFile(f);
+});
+
+let qTimer = null;
+$("q").addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(apply, 150); });
+$("sort").addEventListener("change", apply);
+$("reviewFilter").addEventListener("change", apply);
+$("sortDir").addEventListener("click", () => {
+  sortDir = -sortDir;
+  const b = $("sortDir");
+  b.textContent = sortDir === 1 ? "▼" : "▲";
+  b.classList.toggle("active", sortDir === -1);
+  apply();
+});
+$("clear").addEventListener("click", () => {
+  $("q").value = "";
+  $("reviewFilter").value = "";
+  setAllTags(false);
+  apply();
+});
+
+// ---- tag panel wiring ----
+$("tagToggle").addEventListener("click", () => {
+  $("tagPanel").hidden = !$("tagPanel").hidden;
+});
+$("tagPanel").addEventListener("change", e => {
+  const cb = e.target;
+  if (cb.type !== "checkbox" || !cb.closest('#tagPinned, #tagList')) return;
+  if (cb.checked) selectedTags.add(cb.value); else selectedTags.delete(cb.value);
+  updateTagButton();
+  apply();
+});
+$("selAll").addEventListener("click", () => { setAllTags(true); apply(); });
+$("selNone").addEventListener("click", () => { setAllTags(false); apply(); });
+$("tagMode").addEventListener("change", apply);
+$("tagSearch").addEventListener("input", e => {
+  const term = e.target.value.trim().toLowerCase();
+  for (const lbl of $("tagList").querySelectorAll(".tg"))
+    lbl.hidden = term && !lbl.querySelector(".n").textContent.toLowerCase().includes(term);
+});
+
+// star a card -> toggle favorite
+$("grid").addEventListener("click", e => {
+  const star = e.target.closest(".star");
+  if (star) { e.preventDefault(); toggleFav(star.dataset.app); return; }
+  // click a tag on a card -> add it to the selection
+  const t = e.target.closest(".tag");
+  if (!t) return;
+  const name = t.dataset.tag;
+  selectedTags.add(name);
+  const cb = [...document.querySelectorAll('#tagPinned input, #tagList input')].find(x => x.value === name);
+  if (cb) cb.checked = true;
+  updateTagButton();
+  apply();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// pagination controls (top + bottom share markup, so delegate from document)
+document.addEventListener("click", e => {
+  const b = e.target.closest(".pager button[data-action]");
+  if (b) gotoPage(b.dataset.action);
+});
+$("perPage").addEventListener("change", e => {
+  PAGE_SIZE = +e.target.value;
+  page = 0;
+  renderPage();
+  saveFilters();
+});
+
+// ---- favorites sidebar wiring ----
+$("favToggle").addEventListener("click", () => openFav(!$("favSidebar").classList.contains("open")));
+$("favClose").addEventListener("click", () => openFav(false));
+$("favBackdrop").addEventListener("click", () => openFav(false));
+$("favDownload").addEventListener("click", downloadFavorites);
+$("favList").addEventListener("click", e => {
+  const rm = e.target.closest(".fav-rm");
+  if (rm) toggleFav(rm.dataset.app);
+});
+
+// ---- about modal ----
+function openAbout(open) {
+  if (open) $("aboutLogo").src = $("logo").src;  // reuse the (inlined) bar logo
+  $("aboutModal").hidden = !open;
+  $("aboutBackdrop").classList.toggle("show", open);
+}
+$("logo").addEventListener("click", () => openAbout(true));
+$("aboutClose").addEventListener("click", () => openAbout(false));
+$("aboutBackdrop").addEventListener("click", () => openAbout(false));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") { openAbout(false); openFav(false); }
+});
+
+// reuse the inlined bar logo on the file-select screen (avoids duplicating the data URI)
+$("dropLogo").src = $("logo").src;
+
+// load persisted favorites before any rendering
+loadFavorites();
+refreshFavUI();
+</script>
+</body>
+</html>
