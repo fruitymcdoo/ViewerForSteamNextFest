@@ -35,7 +35,7 @@
   /* ---- Toolbar ---- */
   header.bar {
     position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap;
-    align-items: center; gap: 10px; padding: 12px 16px;
+    align-items: center; gap: 8px; padding: 10px 16px;
     background: #16212e; border-bottom: 1px solid #0e1722;
   }
   header.bar .logo { width: 26px; height: 26px; border-radius: 5px; flex: none; display: block; cursor: pointer; }
@@ -45,7 +45,7 @@
     background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55;
     border-radius: 4px; padding: 7px 9px; font: inherit;
   }
-  header.bar input#q { min-width: 200px; flex: 1 1 220px; }
+  header.bar input#q { min-width: 150px; flex: 1 1 170px; }
   header.bar .spacer { flex: 1; }
   header.bar .count { font-size: 12px; color: #8f98a0; white-space: nowrap; }
   .clearfilter {
@@ -56,7 +56,7 @@
   /* ---- Grid ---- */
   #grid {
     display: grid; gap: 14px; padding: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .card {
     position: relative;
@@ -72,19 +72,29 @@
   .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.45); }
   .card .thumb { display: block; aspect-ratio: 460/215; background: #0e1722; width: 100%; object-fit: cover; }
   .card .body { padding: 10px 11px 12px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
-  .card .name { font-weight: 600; color: #fff; font-size: 14px; line-height: 1.25; }
-  .card .dev { font-size: 11px; color: #8f98a0; margin-top: -3px; }
-  .card .rowmeta { display: flex; align-items: center; gap: 8px; font-size: 11px; flex-wrap: wrap; }
-  .badge { padding: 2px 7px; border-radius: 10px; font-weight: 600; font-size: 11px; }
+  .card .name { font-weight: 600; color: #fff; font-size: 16px; line-height: 1.3; }
+  .card .dev { font-size: 11px; color: #8f98a0; }
+  /* Two head rows: title|% share a baseline, dev|count share a baseline. */
+  .head { display: flex; flex-direction: column; gap: 2px; }
+  .head-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .head-row .name { flex: 1 1 auto; min-width: 0; }
+  .head-row .dev { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .head-row .badge, .head-row .rcount { flex: none; }
+  .badge { padding: 2px 7px; border-radius: 10px; font-weight: 600; font-size: 11px; white-space: nowrap; }
   .badge.none { background: #2a3f55; color: #8f98a0; }
-  .rel { color: #8f98a0; }
+  .rcount { font-size: 11px; color: #8f98a0; white-space: nowrap; }
+  .dates { font-size: 11px; color: #8f98a0; white-space: nowrap; }
+  .dates strong { color: #c7d5e0; font-weight: 600; }
+  .ai-row { margin-top: 1px; }
+  .ai-chip { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px; font-weight: 600; }
+  .ai-chip.yes { background: #5a3a78; color: #e3d2ff; }
+  .ai-chip.no { background: #21364a; color: #6f8296; }
   .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; }
   .tag {
     font-size: 10px; padding: 2px 6px; border-radius: 3px; cursor: pointer;
     background: #2a3f55; color: #b9d2e6;
   }
   .tag:hover { background: #3a566f; color: #fff; }
-  .free { color: #a4d007; font-weight: 600; }
   .empty { padding: 40px 16px; text-align: center; color: #8f98a0; }
   .pager {
     display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -132,6 +142,16 @@
   #tagPinned { padding: 2px 2px 0; }
   .tg.pinned { font-weight: 600; color: #cfe; border-bottom: 1px dashed #2a3f55; padding-bottom: 6px; margin-bottom: 2px; }
   .tp-hint { font-size: 11px; color: #66c0f4; min-height: 14px; margin: 2px 0 6px; }
+
+  /* ---- Filters panel ---- */
+  #filterPanel { background: #16212e; border-bottom: 1px solid #0e1722; padding: 10px 16px; }
+  .fp { display: flex; flex-wrap: wrap; gap: 16px; }
+  .fp-item { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: #8f98a0; }
+  .fp-item select {
+    background: #0e1722; color: #c7d5e0; border: 1px solid #2a3f55;
+    border-radius: 4px; padding: 6px 8px; font: 13px/1.2 "Segoe UI", system-ui, sans-serif;
+  }
+  .fp-item select:disabled { opacity: .5; cursor: not-allowed; }
 
   /* ---- Favorites ---- */
   .favbtn {
@@ -203,16 +223,13 @@
   <span class="meta" id="metaInfo"></span>
   <input type="search" id="q" placeholder="Search name, developer, tag…">
   <button class="tagbtn" id="tagToggle" type="button">Tags ▾</button>
-  <select id="reviewFilter" title="Filter by whether a demo has user reviews">
-    <option value="">All demos</option>
-    <option value="yes">Has reviews</option>
-    <option value="no">No reviews yet</option>
-  </select>
+  <button class="tagbtn" id="filterToggle" type="button">Filters ▾</button>
   <select id="sort">
     <option value="default">Fest order</option>
     <option value="reviewPct">Best reviewed</option>
     <option value="reviewCount">Most reviews</option>
-    <option value="release">Newest release</option>
+    <option value="release">Newest demo</option>
+    <option value="fullRelease">Full game date</option>
     <option value="name">Name A–Z</option>
   </select>
   <button class="tagbtn" id="sortDir" type="button" title="Reverse sort order" aria-label="Reverse sort order">▼</button>
@@ -226,6 +243,32 @@
   <span class="count" id="count"></span>
   <button class="favbtn" id="favToggle" type="button">★ Favorites (0)</button>
 </header>
+
+<section id="filterPanel" hidden>
+  <div class="fp">
+    <label class="fp-item">Reviews
+      <select id="reviewFilter" title="Filter by whether a demo has user reviews">
+        <option value="">All demos</option>
+        <option value="yes">Has reviews</option>
+        <option value="no">No reviews yet</option>
+      </select>
+    </label>
+    <label class="fp-item">Full game release
+      <select id="releaseFilter" title="Filter by the full game's announced release date">
+        <option value="">Any release</option>
+        <option value="dated">Has release date</option>
+        <option value="undated">Undated / TBA</option>
+      </select>
+    </label>
+    <label class="fp-item"><span id="aiFilterLabel">Full game AI</span>
+      <select id="aiFilter" title="Filter by AI-generated content disclosure">
+        <option value="">Any</option>
+        <option value="yes" id="aiOptYes">Full game uses AI</option>
+        <option value="no" id="aiOptNo">No AI in full game</option>
+      </select>
+    </label>
+  </div>
+</section>
 
 <div id="favBackdrop"></div>
 <aside id="favSidebar" aria-hidden="true">
@@ -293,6 +336,26 @@ const STORAGE_KEY = "nextfest_viewer_filters_v1";  // persisted filter/sort stat
 const FAV_KEY = "nextfest_viewer_favorites_v1";    // persisted favorites (name+link+appid)
 const favorites = new Map();   // appid(string) -> { appid, name, store_url }
 const byId = new Map();        // appid(string) -> demo (current dataset)
+let aiScope = null;            // meta.ai_scope: "union" (demo+full) or null (full-game only, legacy)
+
+// AI labels adapt to the data: legacy files only checked the full-game page, so we scope
+// the label to "Full game"; union files (new extension) checked demo + full game.
+function aiLabels() {
+  return aiScope === "union"
+    ? { yes: "Uses AI", no: "No AI", filter: "AI usage", optYes: "Uses AI", optNo: "No AI",
+        titleYes: "Demo or full game discloses AI-generated content",
+        titleNo: "Neither the demo nor the full game discloses AI" }
+    : { yes: "Full game uses AI", no: "No AI in full game", filter: "Full game AI",
+        optYes: "Full game uses AI", optNo: "No AI in full game",
+        titleYes: "The full game's page discloses AI (demo page not scraped yet)",
+        titleNo: "The full game's page has no AI disclosure (demo page not scraped yet)" };
+}
+function applyAiLabels() {
+  const L = aiLabels();
+  $("aiFilterLabel").textContent = L.filter;
+  $("aiOptYes").textContent = L.optYes;
+  $("aiOptNo").textContent = L.optNo;
+}
 
 // ---------- loading ----------
 function readFile(file) {
@@ -315,14 +378,20 @@ function ingest(data) {
   DEMOS = data.demos.map((d, i) => ({ ...d, __i: i, __score: reviewScore(d) }));
   byId.clear();
   for (const d of DEMOS) byId.set(String(d.appid), d);
+  // AI-disclosure controls only make sense if the file was scraped for it.
+  const hasAi = DEMOS.some(d => typeof d.ai_disclosed === "boolean");
+  aiScope = (data.meta && data.meta.ai_scope) || null;
+  applyAiLabels();
+  $("aiFilter").disabled = !hasAi;
+  if (!hasAi) $("aiFilter").value = "";
   buildTagPanel(DEMOS);
   const m = data.meta || {};
   // "Steam Next Fest June 2026" -> "June 2026" (the title already says the rest)
   const period = (m.source || "").replace(/^Steam Next Fest\s*/i, "").trim();
+  // (demo count is already shown in the count badge, so omit it here)
   const parts = [
     period,
-    m.exported_at ? "exported " + m.exported_at.slice(0, 10) : null,
-    (m.resolved_count ?? DEMOS.length) + " demos"
+    m.exported_at ? "exported " + m.exported_at.slice(0, 10) : null
   ].filter(Boolean);
   $("metaInfo").textContent = parts.join(" · ");
   $("drop").hidden = true;
@@ -349,6 +418,25 @@ function relText(d) {
   if (!d.release_date) return "";
   const dt = new Date(d.release_date);
   return Number.isNaN(dt) ? "" : dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+// Full-game (parent) announced release: timestamp for sorting; undated -> Infinity (sorts last).
+function fullReleaseTs(d) {
+  const t = d.full_release_date ? Date.parse(d.full_release_date) : NaN;
+  return Number.isNaN(t) ? Infinity : t;
+}
+// Human label honoring the announced precision (exact date / month / quarter / year / TBA).
+function fullReleaseText(d) {
+  const disp = d.full_release_display;
+  if (disp === "text_tba") return "TBA";
+  if (disp === "text_comingsoon") return "Coming soon";
+  if (!d.full_release_date) return "";
+  const dt = new Date(d.full_release_date);
+  if (Number.isNaN(+dt)) return "";
+  const y = dt.getUTCFullYear();
+  if (disp === "date_year") return String(y);
+  if (disp === "date_quarter") return "Q" + (Math.floor(dt.getUTCMonth() / 3) + 1) + " " + y;
+  if (disp === "date_month") return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", timeZone: "UTC" });
+  return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }
 function reviewColor(pct) {
   if (pct >= 80) return "#66c0f4";
@@ -383,6 +471,13 @@ function buildTagPanel(demos) {
   ).join("");
   selectedTags.clear();
   updateTagButton();
+}
+
+function updateFilterButton() {
+  const n = ["reviewFilter", "releaseFilter", "aiFilter"].filter(id => $(id).value).length;
+  const b = $("filterToggle");
+  b.textContent = "Filters" + (n ? ` (${n})` : "") + " ▾";
+  b.classList.toggle("active", n > 0);
 }
 
 function updateTagHint() {
@@ -421,6 +516,8 @@ function saveFilters() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       q: $("q").value,
       reviewFilter: $("reviewFilter").value,
+      releaseFilter: $("releaseFilter").value,
+      aiFilter: $("aiFilter").value,
       sort: $("sort").value,
       sortDir,
       perPage: $("perPage").value,
@@ -437,6 +534,8 @@ function restoreFilters() {
   if (!s) return;
   if (typeof s.q === "string") $("q").value = s.q;
   if (typeof s.reviewFilter === "string") $("reviewFilter").value = s.reviewFilter;
+  if (typeof s.releaseFilter === "string") $("releaseFilter").value = s.releaseFilter;
+  if (typeof s.aiFilter === "string" && !$("aiFilter").disabled) $("aiFilter").value = s.aiFilter;
   if (s.sort) $("sort").value = s.sort;
   if (s.tagMode) $("tagMode").value = s.tagMode;
   if (s.perPage) { $("perPage").value = String(s.perPage); PAGE_SIZE = +s.perPage; }
@@ -494,7 +593,7 @@ function renderFavList() {
   }
   $("favList").innerHTML = items.map(f =>
     `<div class="fav-item">` +
-      `<a href="${esc(f.store_url || "#")}" target="_blank" rel="noopener">${esc(f.name || f.appid)}</a>` +
+      `<a href="${esc(f.store_url || "#")}" target="_blank" rel="noopener">${esc(displayName(f.name) || f.appid)}</a>` +
       `<button class="fav-rm" data-app="${esc(String(f.appid))}" title="Remove" aria-label="Remove">✕</button>` +
     `</div>`).join("");
 }
@@ -536,6 +635,8 @@ function apply() {
   const mode = $("tagMode").value;           // "any" | "all"
   const sel = selectedTags;
   const reviewF = $("reviewFilter").value;   // "" | "yes" | "no"
+  const releaseF = $("releaseFilter").value; // "" | "dated" | "undated"
+  const aiF = $("aiFilter").value;           // "" | "yes" | "no"
 
   const invert = mode === "any" && sel.size > INVERT_THRESHOLD;
 
@@ -544,6 +645,16 @@ function apply() {
       const hasRev = !!(d.review && d.review.count > 0);
       if (reviewF === "yes" && !hasRev) return false;
       if (reviewF === "no" && hasRev) return false;
+    }
+    if (releaseF) {
+      const hasDate = !!d.full_release_date;
+      if (releaseF === "dated" && !hasDate) return false;
+      if (releaseF === "undated" && hasDate) return false;
+    }
+    if (aiF) {
+      const usesAi = d.ai_disclosed === true;
+      if (aiF === "yes" && !usesAi) return false;
+      if (aiF === "no" && usesAi) return false;
     }
     if (sel.size) {
       // Untagged demos carry one virtual UNTAGGED tag so they flow through every mode.
@@ -570,11 +681,13 @@ function apply() {
     reviewPct:   (a, b) => b.__score - a.__score,
     reviewCount: (a, b) => (b.review?.count || 0) - (a.review?.count || 0),
     release:     (a, b) => relTs(b) - relTs(a),
+    fullRelease: (a, b) => fullReleaseTs(a) - fullReleaseTs(b),  // soonest first; undated last
   }[sort];
   filtered.sort((a, b) => sortDir * cmp(a, b));
 
   updateTagHint();
-  $("clear").hidden = !(q || sel.size || reviewF);
+  updateFilterButton();
+  $("clear").hidden = !(q || sel.size || reviewF || releaseF || aiF);
   $("count").textContent = `${filtered.length.toLocaleString()} of ${DEMOS.length.toLocaleString()}`;
   $("empty").hidden = filtered.length > 0;
 
@@ -583,16 +696,35 @@ function apply() {
   renderPage();
 }
 
+// Strip a trailing "Demo" / "- Demo" / "DEMO Version" / "(Demo)" marker for display.
+// (Search still uses the original name, so typing "demo" or the full title still works.)
+function displayName(name) {
+  if (!name) return "";
+  const s = name.replace(/[\s\-–—:_(]*\bdemo\b(?:\s+version)?\)?[\s.]*$/i, "").trim();
+  return s || name;
+}
+
 // ---------- paginated rendering ----------
 function cardHTML(d, rank) {
   const img = assetUrl(d, "header") || assetUrl(d, "main_capsule");
   const rev = d.review;
   const hasRev = rev && rev.count > 0;
-  const badge = hasRev
-    ? `<span class="badge" style="background:${reviewColor(rev.percent_positive)};color:#16202d">${rev.percent_positive}%</span>
-       <span class="rel">${rev.count.toLocaleString()} review${rev.count === 1 ? "" : "s"}</span>`
+  const pctBadge = hasRev
+    ? `<span class="badge" style="background:${reviewColor(rev.percent_positive)};color:#16202d">${rev.percent_positive}%</span>`
     : `<span class="badge none">No reviews</span>`;
+  const rcount = hasRev ? `<span class="rcount">${rev.count.toLocaleString()} review${rev.count === 1 ? "" : "s"}</span>` : "";
+  const devHtml = (d.developers || []).length ? `<div class="dev">${esc((d.developers || []).join(", "))}</div>` : "";
   const rel = relText(d);
+  const full = fullReleaseText(d);
+  const dateBits = [];
+  if (rel) dateBits.push(`Demo: <strong>${rel}</strong>`);
+  if (full) dateBits.push(`Full game: <strong>${full}</strong>`);
+  const aiL = aiLabels();
+  const aiChip = (typeof d.ai_disclosed === "boolean")
+    ? (d.ai_disclosed
+        ? `<span class="ai-chip yes" title="${aiL.titleYes}">${aiL.yes}</span>`
+        : `<span class="ai-chip no" title="${aiL.titleNo}">${aiL.no}</span>`)
+    : "";
   const tags = topTags(d, 5).map(t =>
     `<span class="tag" data-tag="${esc(t.name)}">${esc(t.name)}</span>`).join("");
 
@@ -605,13 +737,15 @@ function cardHTML(d, rank) {
             : `<div class="thumb"></div>`}
     </a>
     <div class="body">
-      <a class="name" href="${esc(d.store_url || "#")}" target="_blank" rel="noopener">${esc(d.name || "(unnamed)")}</a>
-      ${(d.developers || []).length ? `<div class="dev">${esc((d.developers || []).join(", "))}</div>` : ""}
-      <div class="rowmeta">
-        ${badge}
-        ${d.is_free ? `<span class="free">Free</span>` : ""}
-        ${rel ? `<span class="rel">· ${rel}</span>` : ""}
+      <div class="head">
+        <div class="head-row">
+          <a class="name" href="${esc(d.store_url || "#")}" target="_blank" rel="noopener">${esc(displayName(d.name) || "(unnamed)")}</a>
+          ${pctBadge}
+        </div>
+        ${(devHtml || rcount) ? `<div class="head-row">${devHtml || `<span class="dev"></span>`}${rcount}</div>` : ""}
       </div>
+      ${dateBits.length ? `<div class="dates">${dateBits.join(" · ")}</div>` : ""}
+      ${aiChip ? `<div class="ai-row">${aiChip}</div>` : ""}
       <div class="tags">${tags}</div>
     </div>
   </article>`;
@@ -675,6 +809,8 @@ let qTimer = null;
 $("q").addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(apply, 150); });
 $("sort").addEventListener("change", apply);
 $("reviewFilter").addEventListener("change", apply);
+$("releaseFilter").addEventListener("change", apply);
+$("aiFilter").addEventListener("change", apply);
 $("sortDir").addEventListener("click", () => {
   sortDir = -sortDir;
   const b = $("sortDir");
@@ -685,13 +821,22 @@ $("sortDir").addEventListener("click", () => {
 $("clear").addEventListener("click", () => {
   $("q").value = "";
   $("reviewFilter").value = "";
+  $("releaseFilter").value = "";
+  if (!$("aiFilter").disabled) $("aiFilter").value = "";
   setAllTags(false);
   apply();
 });
 
 // ---- tag panel wiring ----
 $("tagToggle").addEventListener("click", () => {
-  $("tagPanel").hidden = !$("tagPanel").hidden;
+  const willOpen = $("tagPanel").hidden;
+  $("tagPanel").hidden = !willOpen;
+  if (willOpen) $("filterPanel").hidden = true;  // only one panel open at a time
+});
+$("filterToggle").addEventListener("click", () => {
+  const willOpen = $("filterPanel").hidden;
+  $("filterPanel").hidden = !willOpen;
+  if (willOpen) $("tagPanel").hidden = true;
 });
 $("tagPanel").addEventListener("change", e => {
   const cb = e.target;
